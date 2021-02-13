@@ -1,9 +1,8 @@
-
 int const PINO_SGAS = A1;
-int LED_VERDE = 7;
-int LED_AMARELO = 6;
-int LED_VERMELHO1 = 5;
-int LED_VERMELHO2 = 4;
+int LED_GREEN = 7;
+int LED_YELLOW = 6;
+int LED_ORANGE = 5;
+int LED_RED = 4;
 int LED_animal = 3;
 
 // Ultrasonic 
@@ -17,11 +16,11 @@ int maxDistance = 300;
 
 
 void setup(){
-  	pinMode(LED_VERDE, OUTPUT);
+  	pinMode(LED_GREEN, OUTPUT);
   	pinMode(LED_animal, OUTPUT); 
-  	pinMode(LED_AMARELO, OUTPUT);
-    pinMode(LED_VERMELHO1, OUTPUT);
-    pinMode(LED_VERMELHO2, OUTPUT);
+  	pinMode(LED_YELLOW, OUTPUT);
+    pinMode(LED_ORANGE, OUTPUT);
+    pinMode(LED_RED, OUTPUT);
     pinMode(buzzerPin, OUTPUT);
     pinMode(trigPin, OUTPUT);
     pinMode(echoPin, INPUT);
@@ -31,10 +30,11 @@ void setup(){
 void loop(){
     int valor = analogRead(PINO_SGAS);
     valor = map(valor, 300, 750, 0, 100);
-      digitalWrite(LED_VERDE, HIGH);
-      digitalWrite(LED_AMARELO, valor >= 20 ? HIGH : LOW);
-      digitalWrite(LED_VERMELHO1, valor >= 40 ? HIGH : LOW);
-      digitalWrite(LED_VERMELHO2, valor >= 80 ? HIGH : LOW);
+      digitalWrite(LED_GREEN, HIGH);
+      digitalWrite(LED_YELLOW, valor >= 20 ? HIGH : LOW);
+      digitalWrite(LED_ORANGE, valor >= 40 ? HIGH : LOW);
+      digitalWrite(LED_RED, valor >= 80 ? HIGH : LOW);
+      digitalWrite(buzzerPin, valor >= 80 ? HIGH : LOW);
     digitalWrite(trigPin, LOW);
     delayMicroseconds(2);
     // Sets the trigPin HIGH (ACTIVE) for 10 microseconds
